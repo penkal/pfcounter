@@ -1,0 +1,66 @@
+F8.2
+Tratar custodiados similares informados pelo usuário.
+Administrador do DEPEN
+F8.3		 
+Emitir relatório de comparação de custodiados. 	
+Administrador do DEPEN	
+F8.4		 
+Consultar histórico de unificação e separação de cadastro de custodiados.    	
+Administrador do DEPEN	
+F8.5		 
+Gerar relatório com custodiados similares. 	
+Administrador do DEPEN	
+Necessidade 9
+Benefício
+Acompanhar quantitativamente e qualitativamente o cadastro de custodiados.
+Importante
+Id Func.
+Descrição das Funcionalidades/atores envolvidos
+F9.1
+Consultar estatística e relação de custodiados com documentação pendente.
+Administrador do DEPEN , Usuário SISDEPEN
+F9.2		 
+Consultar índice de carga de custodiados
+Administrador do DEPEN , Usuário SISDEPEN	
+F9.3
+Emitir relatório de índice de carga de custodiados.
+Administrador do DEPEN , Usuário SISDEPEN
+Necessidade 10
+Benefício
+Consultar auditoria de operações realizadas no cadastro de custodiados.
+Importante
+Id Func.
+Descrição das Funcionalidades/atores envolvidos
+F10.1
+Consultar auditoria de operações em custodiados.
+Administrador do DEPEN
+F10.2		 
+Emitir relatório de auditoria de operações em custodiados.
+Administrador do DEPEN	
+F10.3		 
+Consultar relação de custodiados mais acessados.
+Administrador do DEPEN	
+F10.4
+Emitir relatório da relação de custodiados mais acessados.
+Administrador do DEPEN
+Necessidade 11
+Benefício
+Monitorar operações de serviços web.
+Útil
+Id Func.
+Descrição das Funcionalidades/atores envolvidos
+F11.1
+Consultar log de serviços web.
+Administrador do DEPEN , Administrador do SERPRO
+Necessidade 12
+Benefício
+Consolidar informações dos custodiados cadastrados no sistema.
+Importante
+Id Func.
+Descrição das Funcionalidades/atores envolvidos
+F12.1		 
+Consultar informações consolidadas do custodiado.
+Administrador do DEPEN	
+F12.2
+Gerar relatório com informações consolidadas dos custodiados.
+Administrador do DEPEN

@@ -1,0 +1,221 @@
+4. Necessidades e Funcionalidades
+Necessidade 1
+Benefício
+Controlar acesso e navegação do sistema.
+Descrição das Funcionalidades/atores envolvidos
+F1.1
+Manter pré-cadastro individual de usuário
+Cadastrador,  Administrador do DEPEN
+F1.2
+Realizar primeiro acesso do usuário
+Usuário SISDEPEN
+F1.3
+Complementar cadastro de usuário
+Usuário SISDEPEN
+F1.4		 
+Efetuar login
+Usuário SISDEPEN
+F1.5
+Recuperar senha
+Usuário SISDEPEN
+F1.6		 
+Realizar pré-cadastro de usuários em lote
+Cadastrador	
+F1.7		 
+Manter cadastro de funcionalidade do sistema
+Administrador do DEPEN, Administrador do SERPRO	
+F1.8		 
+Manter perfil de acesso
+Administrador do DEPEN	
+F1.9		  
+Permitir consultar, alterar, inativar e reativar usuário.
+Cadastrador	
+F1.10		 
+Permitir que o usuário altere a senha voluntariamente.
+Usuário SISDEPEN	
+F1.11		 
+Permitir que o usuário altere seus dados complementares
+Usuário SISDEPEN	
+Necessidade 2
+Benefício
+Realizar levantamento para obter a situação do sistema prisional brasileiro quanto a capacidade, estrutura, perfil dos custodiados e movimentações, bem como as ações de reintegração social.
+Crítico
+Id Func.
+Descrição das Funcionalidades/atores envolvidos
+F2.1
+Preencher dados do formulário de informações penitenciárias.
+Usuário SISDEPEN
+F2.2
+Consultar situação de preenchimento do  questionário por estabelecimento penitenciário e de tratamento para o ciclo vigente.
+Administrador do DEPEN
+F2.3		 
+Emitir relatório com a situação de preenchimento do questionário de informações penitenciárias para um determinado ciclo, de forma consolidada e detalhada.
+Usuário SISDEPEN, Acionador batch	
+Necessidade 3
+Benefício
+Manter a estrutura organizacional do sistema prisional brasileiro, envolvendo órgãos da justiça e do executivo
+Importante
+Id Func.
+Descrição das Funcionalidades/atores envolvidos
+F3.1
+Manter estrutura organizacional
+Cadastrador, Administrador do DEPEN	
+F3.2
+Consultar estruturas organizacionais por interoperabilidade
+Usuário SISDEPEN
+Necessidade 4
+Benefício
+Comunicação de ocorrências e informações de interesse dos usuários do sistema de forma tempestiva. Exemplo: informar manutenção programada, indisponibilidade programada.
+Útil
+Id Func.
+Descrição das Funcionalidades/atores envolvidos
+F4.1
+Gerar comunicado aos usuários do sistema
+Administrador do DEPEN
+F4.2
+Visualizar comunicados
+Usuário SISDEPEN
+Necessidade 5
+Benefício
+Analisar os dados coletados no formulário de informações penitenciárias.
+Crítico
+Id Func.
+Descrição das Funcionalidades/atores envolvidos
+F5.1
+Exportar dados do formulário de informações penitenciárias.
+Administrador do DEPEN
+F5.2
+Emitir relatório com os quantitativos consolidados do formulário de informações penitenciárias.
+Usuário SISDEPEN
+F5.3
+Emitir relatório do formulário de informações penitenciárias.
+Usuário SISDEPEN
+Necessidade 6
+Benefício
+Manter tabelas de apoio
+Útil
+Id Func.
+Descrição das Funcionalidades/atores envolvidos
+F6.1
+Manter tipo de estrutura organizacional
+Administrador do DEPEN
+F6.2
+Manter ajuda do questionário de informações penitenciárias.
+Administrador do DEPEN
+F6.3		  
+Manter ciclos.
+Administrador do DEPEN	
+F6.4		 
+Manter reabertura de formulários de informações penitenciárias.
+Administrador do DEPEN	
+Necessidade 7
+Benefício
+Cadastro nacional de custodiados que permita consultar e manter os dados individuais de cada custodiado, como também a situação e localização atuais da sua custódia
+Crítico
+Id Func.
+Descrição das Funcionalidades/atores envolvidos
+F7.1
+Manter cadastro de custodiado pelo SISDEPEN.
+Usuário SISDEPEN
+F7.2
+Movimentar e cancelar movimentação de custodiado pelo SISDEPEN
+Usuário SISDEPEN
+F7.3		 
+Manter cadastro de custodiado por interoperabilidade.
+Usuário SISDEPEN	
+F7.4		 
+Movimentar e cancelar movimentação de custodiado por interoperabilidade
+Usuário SISDEPEN	
+F7.5		 
+Consultar cadastro do custodiado por interoperabilidade
+Usuário SISDEPEN	
+F7.6		 
+Consultar movimentações do custodiado por interoperabilidade
+Usuário SISDEPEN	
+F7.7		 
+Emitir relatório com o prontuário de um determinado custodiado, contendo os mesmos dados apresentados em tela.
+Usuário SISDEPEN	
+F7.8		 
+Realizar cadastro de custodiados em lote
+Usuário SISDEPEN	
+F7.9		 
+Gerar Relatório Quantitativo e Nominal de custodiados.
+Usuário SISDEPEN	
+F7.10		 
+Consultar tipo penal por interoperabilidade.
+Usuário Sistema Externo	
+Necessidade 8
+Benefício
+Identificar e tratar possíveis duplicidades de cadastro de custodiado no Sistema.
+Importante
+Id Func.
+Descrição das Funcionalidades/atores envolvidos
+F8.1
+Tratar custodiados similares identificados automaticamente pelo Sistema.
+Administrador do DEPEN
+F8.2
+Tratar custodiados similares informados pelo usuário.
+Administrador do DEPEN
+F8.3		 
+Emitir relatório de comparação de custodiados. 	
+Administrador do DEPEN	
+F8.4		 
+Consultar histórico de unificação e separação de cadastro de custodiados.    	
+Administrador do DEPEN	
+F8.5		 
+Gerar relatório com custodiados similares. 	
+Administrador do DEPEN	
+Necessidade 9
+Benefício
+Acompanhar quantitativamente e qualitativamente o cadastro de custodiados.
+Importante
+Id Func.
+Descrição das Funcionalidades/atores envolvidos
+F9.1
+Consultar estatística e relação de custodiados com documentação pendente.
+Administrador do DEPEN , Usuário SISDEPEN
+F9.2		 
+Consultar índice de carga de custodiados
+Administrador do DEPEN , Usuário SISDEPEN	
+F9.3
+Emitir relatório de índice de carga de custodiados.
+Administrador do DEPEN , Usuário SISDEPEN
+Necessidade 10
+Benefício
+Consultar auditoria de operações realizadas no cadastro de custodiados.
+Importante
+Id Func.
+Descrição das Funcionalidades/atores envolvidos
+F10.1
+Consultar auditoria de operações em custodiados.
+Administrador do DEPEN
+F10.2		 
+Emitir relatório de auditoria de operações em custodiados.
+Administrador do DEPEN	
+F10.3		 
+Consultar relação de custodiados mais acessados.
+Administrador do DEPEN	
+F10.4
+Emitir relatório da relação de custodiados mais acessados.
+Administrador do DEPEN
+Necessidade 11
+Benefício
+Monitorar operações de serviços web.
+Útil
+Id Func.
+Descrição das Funcionalidades/atores envolvidos
+F11.1
+Consultar log de serviços web.
+Administrador do DEPEN , Administrador do SERPRO
+Necessidade 12
+Benefício
+Consolidar informações dos custodiados cadastrados no sistema.
+Importante
+Id Func.
+Descrição das Funcionalidades/atores envolvidos
+F12.1		 
+Consultar informações consolidadas do custodiado.
+Administrador do DEPEN	
+F12.2
+Gerar relatório com informações consolidadas dos custodiados.
+Administrador do DEPEN

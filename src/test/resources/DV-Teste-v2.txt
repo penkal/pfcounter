@@ -1,0 +1,12 @@
+F8.2
+Tratar custodiados similares informados pelo usuário.
+Administrador do DEPEN
+F8.3		 
+Emitir relatório de comparação de custodiados. 	
+Administrador do DEPEN	
+F8.4		 
+Consultar histórico de unificação e separação de cadastro de custodiados.    	
+Administrador do DEPEN	
+F8.5		 
+Gerar relatório com custodiados similares. 	
+Administrador do DEPEN	

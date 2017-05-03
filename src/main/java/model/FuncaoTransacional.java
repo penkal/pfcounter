@@ -5,6 +5,16 @@ public class FuncaoTransacional {
 	TipoTransacao tipo;
 	double confianca;
 	int pontuacao;
+	
+	public FuncaoTransacional(){}
+	
+	public FuncaoTransacional(String nome, String tipo, double confianca, int pontuacao){
+		super();
+		this.nome = nome;
+		this.tipo = TipoTransacao.valueOf(tipo);
+		this.confianca = confianca;
+		this.pontuacao = pontuacao;
+	}
 
 	public FuncaoTransacional(String nome, TipoTransacao tipo, double confianca) {
 		super();
@@ -42,6 +52,22 @@ public class FuncaoTransacional {
 		} else {
 			return "conf3";
 		}
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public void setTipo(TipoTransacao tipo) {
+		this.tipo = tipo;
+	}
+
+	public void setConfianca(double confianca) {
+		this.confianca = confianca;
+	}
+
+	public void setPontuacao(int pontuacao) {
+		this.pontuacao = pontuacao;
 	}
 
 }

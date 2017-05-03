@@ -6,9 +6,9 @@ import static org.junit.Assert.assertTrue;
 import java.io.File;
 import java.util.List;
 
-import model.FuncaoTransacional;
-
 import org.junit.Test;
+
+import model.FuncaoTransacional;
 
 public class DocumentReaderTest {
 

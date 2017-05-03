@@ -36,7 +36,7 @@ public class ReclassifyTest {
 			if (ft==null){
 				continue;
 			}
-			boolean irrelevant =  false;//(i % 5 == 0);
+			boolean irrelevant =  (i % 5 == 0);
 			listaDTO.add(new ReclassifyDTO(ft, rotateTipo(ft.getTipo()), irrelevant));
 			i++;
 		}

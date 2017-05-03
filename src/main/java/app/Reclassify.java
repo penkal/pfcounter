@@ -9,6 +9,8 @@ import com.ibm.watson.developer_cloud.conversation.v1.model.ExampleCollectionRes
 import com.ibm.watson.developer_cloud.conversation.v1.model.ExampleResponse;
 import com.ibm.watson.developer_cloud.http.ServiceCall;
 
+import model.TipoTransacao;
+
 public class Reclassify {
 
 	private static final Logger LOG = Logger.getAnonymousLogger();
@@ -22,15 +24,32 @@ public class Reclassify {
 				listaResponse.add(conversationService.createCounterexample(docReader.wksId, dto.getFuncaoTransacional().getNome()).execute());
 				LOG.info("Marcando '" + dto.getFuncaoTransacional().getNome() + "' como irrelevante." );
 			} else {
-			if (conversationService.getExample(docReader.wksId, dto.getFuncaoTransacional().getTipo().name(), 
-					dto.getFuncaoTransacional().getNome()).execute() != null){
+				try{
+//			if (conversationService.getExample(docReader.wksId, dto.getFuncaoTransacional().getTipo().name(), 
+//					dto.getFuncaoTransacional().getNome()).execute() != null){
 				conversationService.deleteExample(docReader.wksId, dto.getFuncaoTransacional().getTipo().name(), 
-						dto.getFuncaoTransacional().getNome()).execute();				
-			}
+						dto.getFuncaoTransacional().getNome()).execute();
+				
+				conversationService.deleteExample(docReader.wksId, TipoTransacao.CE.name(), 
+						dto.getFuncaoTransacional().getNome()).execute();
+				conversationService.deleteExample(docReader.wksId, TipoTransacao.EE.name(), 
+						dto.getFuncaoTransacional().getNome()).execute();
+				conversationService.deleteExample(docReader.wksId, TipoTransacao.CRUD.name(), 
+						dto.getFuncaoTransacional().getNome()).execute();
+				conversationService.deleteExample(docReader.wksId, TipoTransacao.SE.name(), 
+						dto.getFuncaoTransacional().getNome()).execute();
+//			}
+				}catch(Exception e){
+					System.out.println(e);
+				}
+				try{
 				listaResponse.add(conversationService.createExample(docReader.wksId, dto.getNovoTipo().name(), 
 						dto.getFuncaoTransacional().getNome()).execute());
 				LOG.info("Mudando tipo de '" + dto.getFuncaoTransacional().getNome() + 
 						"' de '" + dto.getFuncaoTransacional().getTipo() + "' para '" + dto.getNovoTipo() );
+				}catch(Exception e){
+					System.out.println(e);
+				}
 			}
 		
 		}

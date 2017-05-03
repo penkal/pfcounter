@@ -27,11 +27,13 @@ public class DocumentReader {
 		List<FuncaoTransacional> linhasProcessadas = new ArrayList<FuncaoTransacional>();
 		try {
 			Scanner scan = new Scanner(textFile);
+			ConversationService conversationService = iniciarConversation();
 			while (scan.hasNextLine()) {
 				String linha = scan.nextLine();
 				linha = linha.replaceAll("\t", "");
 				if (linha.length() > 10 && linha.contains(" ")) {
-					linhasProcessadas.add(processarLinha(linha));
+					FuncaoTransacional funcaoTransacional = processarLinha(linha, conversationService);
+					linhasProcessadas.add(funcaoTransacional);
 				} else {
 					LOG.info("Descartando a linha:" + linha);
 				}
@@ -50,8 +52,7 @@ public class DocumentReader {
 		return conversationService;
 	}
 	
-	private FuncaoTransacional processarLinha(String linha) {
-		ConversationService conversationService = iniciarConversation();
+	private FuncaoTransacional processarLinha(String linha, ConversationService conversationService) {
 		Builder msg = new MessageRequest.Builder().inputText(linha);
 		MessageRequest msgtxt = msg.build();
 		MessageResponse response = conversationService.message(wksId, msgtxt)

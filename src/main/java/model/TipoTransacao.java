@@ -2,6 +2,22 @@ package model;
 
 public enum TipoTransacao {
 
-	CE, EE, SE, CRUD;
+	CE("Consulta Externa", 4), EE("Entrada Externa", 4), SE("Consulta Externa",
+			5), CRUD("CRUD", 20);
 
+	private String descricao;
+	private int pontos;
+
+	private TipoTransacao(String descricao, int pontos) {
+		this.descricao = descricao;
+		this.pontos = pontos;
+	}
+
+	public String getDescricao() {
+		return this.descricao;
+	}
+
+	public int getPontos() {
+		return this.pontos;
+	}
 }

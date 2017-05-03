@@ -18,6 +18,10 @@ import com.ibm.watson.developer_cloud.conversation.v1.model.MessageResponse;
 
 public class DocumentReader {
 	private static final Logger LOG = Logger.getAnonymousLogger();
+	public final String versao = "2017-04-21";
+	public final String username = "d8e1b624-2697-4f43-b341-57037ab19846";
+	public final String password = "45LTxKOJof5w";
+	public final String wksId = "7547197d-9868-4fd3-bdff-614af8e5f84a";
 
 	public List<FuncaoTransacional> parseFile(File textFile) {
 		List<FuncaoTransacional> linhasProcessadas = new ArrayList<FuncaoTransacional>();
@@ -39,13 +43,15 @@ public class DocumentReader {
 		return linhasProcessadas;
 	}
 
-	private FuncaoTransacional processarLinha(String linha) {
+	public ConversationService iniciarConversation(){
 		ConversationService conversationService = new ConversationService(
-				"2017-04-21");
-		final String username = "d8e1b624-2697-4f43-b341-57037ab19846";
-		final String password = "45LTxKOJof5w";
-		final String wksId = "7547197d-9868-4fd3-bdff-614af8e5f84a";
+				versao);
 		conversationService.setUsernameAndPassword(username, password);
+		return conversationService;
+	}
+	
+	private FuncaoTransacional processarLinha(String linha) {
+		ConversationService conversationService = iniciarConversation();
 		Builder msg = new MessageRequest.Builder().inputText(linha);
 		MessageRequest msgtxt = msg.build();
 		MessageResponse response = conversationService.message(wksId, msgtxt)
@@ -56,7 +62,6 @@ public class DocumentReader {
 		} else {
 			return processarResposta(response);
 		}
-
 	}
 
 	private FuncaoTransacional processarResposta(MessageResponse response) {

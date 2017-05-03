@@ -19,7 +19,7 @@ public class DocumentReaderTest {
 		assertTrue(dv.exists());
 
 		DocumentReader sut = new DocumentReader();
-		List<FuncaoTransacional> funcoesProcessadas = sut.parseFile(filePath);
+		List<FuncaoTransacional> funcoesProcessadas = sut.parseFile(dv);
 		assertFalse(funcoesProcessadas.isEmpty());
 	}
 

@@ -32,12 +32,16 @@ public class DocumentReader {
 				String linha = scan.nextLine();
 				linha = linha.replaceAll("\t", "");
 				if (linha.length() > 10 && linha.contains(" ")) {
-					FuncaoTransacional funcaoTransacional = processarLinha(linha, conversationService);
-					linhasProcessadas.add(funcaoTransacional);
+					FuncaoTransacional funcaoTransacional = processarLinha(
+							linha, conversationService);
+					if (funcaoTransacional != null) {
+						linhasProcessadas.add(funcaoTransacional);
+					}
 				} else {
 					LOG.info("Descartando a linha:" + linha);
 				}
 			}
+			scan.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			LOG.warning(e.toString());
@@ -70,7 +74,8 @@ public class DocumentReader {
 		return conversationService;
 	}
 	
-	private FuncaoTransacional processarLinha(String linha, ConversationService conversationService) {
+	private FuncaoTransacional processarLinha(String linha,
+			ConversationService conversationService) {
 		Builder msg = new MessageRequest.Builder().inputText(linha);
 		MessageRequest msgtxt = msg.build();
 		MessageResponse response = conversationService.message(wksId, msgtxt)

@@ -40,11 +40,13 @@ public class DocumentReader {
 	private FuncaoTransacional processarLinha(String linha) {
 		ConversationService conversationService = new ConversationService(
 				"2017-04-21");
+		final String username = "d8e1b624-2697-4f43-b341-57037ab19846";
+		final String password = "45LTxKOJof5w";
+		final String wksId = "7547197d-9868-4fd3-bdff-614af8e5f84a";
 		conversationService.setUsernameAndPassword(
-				"d8e1b624-2697-4f43-b341-57037ab19846", "45LTxKOJof5w");
+				username, password);
 		Builder msg = new MessageRequest.Builder().inputText(linha);
 		MessageRequest msgtxt = msg.build();
-		String wksId = "7547197d-9868-4fd3-bdff-614af8e5f84a";
 		MessageResponse response = conversationService.message(wksId, msgtxt)
 				.execute();
 		if (response.getIntents().isEmpty()) {

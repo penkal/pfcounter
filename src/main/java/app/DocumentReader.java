@@ -7,14 +7,14 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
-import model.FuncaoTransacional;
-import model.TipoTransacao;
-
 import com.ibm.watson.developer_cloud.conversation.v1.ConversationService;
 import com.ibm.watson.developer_cloud.conversation.v1.model.Intent;
 import com.ibm.watson.developer_cloud.conversation.v1.model.MessageRequest;
 import com.ibm.watson.developer_cloud.conversation.v1.model.MessageRequest.Builder;
 import com.ibm.watson.developer_cloud.conversation.v1.model.MessageResponse;
+
+import model.FuncaoTransacional;
+import model.TipoTransacao;
 
 public class DocumentReader {
 	private static final Logger LOG = Logger.getAnonymousLogger();
@@ -48,32 +48,35 @@ public class DocumentReader {
 		}
 		return linhasProcessadas;
 	}
-
+	
 	public List<FuncaoTransacional> parseFile(String text) {
 		List<FuncaoTransacional> linhasProcessadas = new ArrayList<FuncaoTransacional>();
-		Scanner scan = new Scanner(text);
-		ConversationService conversationService = iniciarConversation();
-		while (scan.hasNextLine()) {
-			String linha = scan.nextLine();
-			linha = linha.replaceAll("\t", "");
-			if (linha.length() > 10 && linha.contains(" ")) {
-				FuncaoTransacional funcaoTransacional = processarLinha(linha, conversationService);
-				linhasProcessadas.add(funcaoTransacional);
-			} else {
-				LOG.info("Descartando a linha:" + linha);
+			Scanner scan = new Scanner(text);
+			ConversationService conversationService = iniciarConversation();
+			while (scan.hasNextLine()) {
+				String linha = scan.nextLine();
+				linha = linha.replaceAll("\t", "");
+				if (linha.length() > 10 && linha.contains(" ")) {
+					FuncaoTransacional funcaoTransacional = processarLinha(
+							linha, conversationService);
+					if (funcaoTransacional != null) {
+						linhasProcessadas.add(funcaoTransacional);
+					}
+				} else {
+					LOG.info("Descartando a linha:" + linha);
+				}
 			}
-		}
-		scan.close();
+			scan.close();
 		return linhasProcessadas;
 	}
 
-	public ConversationService iniciarConversation(){
+	public ConversationService iniciarConversation() {
 		ConversationService conversationService = new ConversationService(
 				versao);
 		conversationService.setUsernameAndPassword(username, password);
 		return conversationService;
 	}
-	
+
 	private FuncaoTransacional processarLinha(String linha,
 			ConversationService conversationService) {
 		Builder msg = new MessageRequest.Builder().inputText(linha);

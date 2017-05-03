@@ -38,6 +38,7 @@ public class DocumentReader {
 					LOG.info("Descartando a linha:" + linha);
 				}
 			}
+			scan.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			LOG.warning(e.toString());

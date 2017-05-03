@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 import model.FuncaoTransacional;
 import model.TipoTransacao;
@@ -16,6 +17,7 @@ import com.ibm.watson.developer_cloud.conversation.v1.model.MessageRequest.Build
 import com.ibm.watson.developer_cloud.conversation.v1.model.MessageResponse;
 
 public class DocumentReader {
+	private static final Logger LOG = Logger.getAnonymousLogger();
 
 	public List<FuncaoTransacional> parseFile(File textFile) {
 		List<FuncaoTransacional> linhasProcessadas = new ArrayList<FuncaoTransacional>();
@@ -27,12 +29,12 @@ public class DocumentReader {
 				if (linha.length() > 10 && linha.contains(" ")) {
 					linhasProcessadas.add(processarLinha(linha));
 				} else {
-					System.out.println("Descartando a linha:" + linha);
+					LOG.info("Descartando a linha:" + linha);
 				}
 			}
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOG.warning(e.toString());
 		}
 		return linhasProcessadas;
 	}
@@ -43,14 +45,13 @@ public class DocumentReader {
 		final String username = "d8e1b624-2697-4f43-b341-57037ab19846";
 		final String password = "45LTxKOJof5w";
 		final String wksId = "7547197d-9868-4fd3-bdff-614af8e5f84a";
-		conversationService.setUsernameAndPassword(
-				username, password);
+		conversationService.setUsernameAndPassword(username, password);
 		Builder msg = new MessageRequest.Builder().inputText(linha);
 		MessageRequest msgtxt = msg.build();
 		MessageResponse response = conversationService.message(wksId, msgtxt)
 				.execute();
 		if (response.getIntents().isEmpty()) {
-			System.out.println("Linha '" + linha + "' processada: irrelevant");
+			LOG.info("Linha '" + linha + "' processada: irrelevant");
 			return null;
 		} else {
 			return processarResposta(response);
@@ -63,7 +64,7 @@ public class DocumentReader {
 		FuncaoTransacional funcao = new FuncaoTransacional(
 				response.getInputText(), TipoTransacao.valueOf(intent
 						.getIntent()), intent.getConfidence());
-		System.out.println("Linha :'" + funcao.getNome() + "' confianca: "
+		LOG.info("Linha :'" + funcao.getNome() + "' confianca: "
 				+ funcao.getConfianca() + " tipo:" + funcao.getTipo());
 		return funcao;
 	}

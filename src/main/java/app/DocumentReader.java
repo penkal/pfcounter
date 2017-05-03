@@ -19,9 +19,9 @@ import com.ibm.watson.developer_cloud.conversation.v1.model.MessageResponse;
 public class DocumentReader {
 	private static final Logger LOG = Logger.getAnonymousLogger();
 	public final String versao = "2017-04-21";
-	public final String username = "d8e1b624-2697-4f43-b341-57037ab19846";
-	public final String password = "45LTxKOJof5w";
-	public final String wksId = "7547197d-9868-4fd3-bdff-614af8e5f84a";
+	public final String username = "b7bf276e-1fd2-4225-8f31-6fe19b10daf0";
+	public final String password = "rGIgcLIabvNU";
+	public final String wksId = "13fbe900-13ba-4d90-895d-ea8fe58a6507";
 
 	public List<FuncaoTransacional> parseFile(File textFile) {
 		List<FuncaoTransacional> linhasProcessadas = new ArrayList<FuncaoTransacional>();

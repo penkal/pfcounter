@@ -14,7 +14,8 @@ public class DocumentReaderTest {
 
 	@Test
 	public void testPartseFile() {
-		File dv = new File("src/test/resources/DV-Teste-v2");
+		String filePath = "src/test/resources/DV-Teste-v2";
+		File dv = new File(filePath);
 		assertTrue(dv.exists());
 
 		DocumentReader sut = new DocumentReader();

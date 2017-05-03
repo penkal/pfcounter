@@ -4,12 +4,14 @@ public class FuncaoTransacional {
 	String nome;
 	TipoTransacao tipo;
 	double confianca;
+	int pontuacao;
 
 	public FuncaoTransacional(String nome, TipoTransacao tipo, double confianca) {
 		super();
 		this.nome = nome;
 		this.tipo = tipo;
 		this.confianca = confianca;
+		this.pontuacao = tipo.getPontos();
 	}
 
 	public String getNome() {
@@ -22,6 +24,10 @@ public class FuncaoTransacional {
 
 	public double getConfianca() {
 		return confianca;
+	}
+
+	public int getPontuacao() {
+		return pontuacao;
 	}
 
 	public String toHTML() {

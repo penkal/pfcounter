@@ -7,14 +7,14 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
+import model.FuncaoTransacional;
+import model.TipoTransacao;
+
 import com.ibm.watson.developer_cloud.conversation.v1.ConversationService;
 import com.ibm.watson.developer_cloud.conversation.v1.model.Intent;
 import com.ibm.watson.developer_cloud.conversation.v1.model.MessageRequest;
 import com.ibm.watson.developer_cloud.conversation.v1.model.MessageRequest.Builder;
 import com.ibm.watson.developer_cloud.conversation.v1.model.MessageResponse;
-
-import model.FuncaoTransacional;
-import model.TipoTransacao;
 
 public class DocumentReader {
 	private static final Logger LOG = Logger.getAnonymousLogger();
@@ -24,52 +24,41 @@ public class DocumentReader {
 	public final String wksId = "13fbe900-13ba-4d90-895d-ea8fe58a6507";
 
 	public List<FuncaoTransacional> parseFile(File textFile) {
-		List<FuncaoTransacional> linhasProcessadas = new ArrayList<FuncaoTransacional>();
 		try {
-			Scanner scan = new Scanner(textFile);
-			ConversationService conversationService = iniciarConversation();
-			while (scan.hasNextLine()) {
-				String linha = scan.nextLine();
-				linha = linha.replaceAll("\t", "");
-				if (linha.length() > 10 && linha.contains(" ")) {
-					FuncaoTransacional funcaoTransacional = processarLinha(
-							linha, conversationService);
-					if (funcaoTransacional != null) {
-						linhasProcessadas.add(funcaoTransacional);
-					}
-				} else {
-					LOG.info("Descartando a linha:" + linha);
-				}
-			}
-			scan.close();
+			final Scanner scan = new Scanner(textFile);
+			return parseScanner(scan);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			LOG.warning(e.toString());
+			return null;
 		}
-		return linhasProcessadas;
-	}
-	
-	public List<FuncaoTransacional> parseFile(String text) {
-		List<FuncaoTransacional> linhasProcessadas = new ArrayList<FuncaoTransacional>();
-			Scanner scan = new Scanner(text);
-			ConversationService conversationService = iniciarConversation();
-			while (scan.hasNextLine()) {
-				String linha = scan.nextLine();
-				linha = linha.replaceAll("\t", "");
-				if (linha.length() > 10 && linha.contains(" ")) {
-					FuncaoTransacional funcaoTransacional = processarLinha(
-							linha, conversationService);
-					if (funcaoTransacional != null) {
-						linhasProcessadas.add(funcaoTransacional);
-					}
-				} else {
-					LOG.info("Descartando a linha:" + linha);
-				}
-			}
-			scan.close();
-		return linhasProcessadas;
 	}
 
+	public List<FuncaoTransacional> parseFile(String text) {
+		Scanner scan = new Scanner(text);
+		return parseScanner(scan);
+	}
+	
+	private List<FuncaoTransacional> parseScanner(final Scanner scan){
+		List<FuncaoTransacional> linhasProcessadas = new ArrayList<FuncaoTransacional>();
+		ConversationService conversationService = iniciarConversation();
+		while (scan.hasNextLine()) {
+			String linha = scan.nextLine();
+			linha = linha.replaceAll("\t", "");
+			if (linha.length() > 10 && linha.contains(" ")) {
+				FuncaoTransacional funcaoTransacional = processarLinha(linha,
+						conversationService);
+				if (funcaoTransacional != null) {
+					linhasProcessadas.add(funcaoTransacional);
+				}
+			} else {
+				LOG.info("Descartando a linha:" + linha);
+			}
+		}
+		scan.close();
+		return linhasProcessadas;
+		
+	}
 	public ConversationService iniciarConversation() {
 		ConversationService conversationService = new ConversationService(
 				versao);
